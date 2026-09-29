@@ -1,25 +1,51 @@
 from collections import Counter
 
 
-def read_text(filename):
-    """Читает текст из файла."""
-    with open(filename, "r", encoding="utf-8") as file:
-        return file.read()
+def read_text():
+    """
+    Считывает текст из консоли и одновременно подсчитывает буквы.
 
+    Ввод осуществляется построчно.
+    Для завершения ввода пользователь вводит команду /end.
 
-def count_letters(text):
-    """Подсчитывает частоту каждой буквы."""
-    letters = []
+    Весь текст целиком в памяти не хранится.
+    Каждая строка сразу обрабатывается и после этого больше не нужна.
+    """
 
-    for char in text.lower():
-        if char.isalpha():
-            letters.append(char)
+    counter = Counter()
 
-    return Counter(letters)
+    print("\nВведите текст.")
+    print("Для завершения ввода введите /end на отдельной строке.\n")
+
+    while True:
+        line = input()
+
+        if line == "/end":
+            break
+
+        line = line.lower()
+
+        for char in line:
+
+            if char.isalpha():
+
+                counter[char] += 1
+
+    return counter
 
 
 def print_statistics(counter):
-    """Выводит статистику частоты букв."""
+    """
+    Выводит частоту каждой найденной буквы.
+
+    Параметр counter содержит результаты подсчёта.
+    """
+
+    if not counter:
+
+        print("\nТекст не содержит букв.")
+
+        return
 
     total = sum(counter.values())
 
@@ -35,10 +61,11 @@ def print_statistics(counter):
 
 
 def print_histogram(counter):
-    """Выводит вертикальную гистограмму."""
+    """
+    Выводит вертикальную гистограмму частоты букв.
+    """
 
     if not counter:
-        print("Текст не содержит букв.")
         return
 
     max_count = max(counter.values())
@@ -59,11 +86,8 @@ def print_histogram(counter):
                 print("  █  ", end="")
             else:
                 print("     ", end="")
-
         print()
-
     print("  " + "─────" * len(counter))
-
     for letter in sorted(counter):
         print(f"  {letter}  ", end="")
 
@@ -71,17 +95,16 @@ def print_histogram(counter):
 
 
 def run():
+    """
+    Главная функция лабораторной работы №1.
+
+    Именно эту функцию вызывает main.py.
+    """
 
     print("\n" + "=" * 40)
     print("ЛАБОРАТОРНАЯ РАБОТА №1")
     print("Подсчёт частоты букв")
     print("=" * 40)
-
-    filename = "data/text.txt"
-
-    text = read_text(filename)
-
-    counter = count_letters(text)
-
+    counter = read_text()
     print_statistics(counter)
     print_histogram(counter)
