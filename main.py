@@ -7,6 +7,7 @@ def print_menu():
     print("3. Алгоритм Витерби")
     print("4. Алгоритм Портера")
     print("5. Бинарные отношения и замыкания")
+    print("6. Конечный автомат")
     print("0. Выход")
     print("=" * 40)
 
@@ -35,6 +36,10 @@ def main():
 
         elif choice == "5":
             from lab5.binary_relations import run
+            run()
+
+        elif choice == "6":
+            from lab6.finite_automaton import run
             run()
 
         elif choice == "0":
