@@ -4,6 +4,7 @@ def print_menu():
     print("=" * 40)
     print("1. Частота букв")
     print("2. Частота слов")
+    print("3. Алгоритм Витерби")
     print("0. Выход")
     print("=" * 40)
 
@@ -20,6 +21,10 @@ def main():
 
         elif choice == "2":
             from lab2.word_frequency import run
+            run()
+
+        elif choice == "3":
+            from lab3.viterbi import run
             run()
 
         elif choice == "0":
