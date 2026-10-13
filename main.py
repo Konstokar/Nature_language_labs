@@ -6,6 +6,7 @@ def print_menu():
     print("2. Частота слов")
     print("3. Алгоритм Витерби")
     print("4. Алгоритм Портера")
+    print("5. Бинарные отношения и замыкания")
     print("0. Выход")
     print("=" * 40)
 
@@ -32,6 +33,9 @@ def main():
             from lab4.porter_stemmer import run
             run()
 
+        elif choice == "5":
+            from lab5.binary_relations import run
+            run()
 
         elif choice == "0":
             print("Программа завершена.")
