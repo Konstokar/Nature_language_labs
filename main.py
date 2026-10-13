@@ -5,6 +5,7 @@ def print_menu():
     print("1. Частота букв")
     print("2. Частота слов")
     print("3. Алгоритм Витерби")
+    print("4. Алгоритм Портера")
     print("0. Выход")
     print("=" * 40)
 
@@ -26,6 +27,11 @@ def main():
         elif choice == "3":
             from lab3.viterbi import run
             run()
+
+        elif choice == "4":
+            from lab4.porter_stemmer import run
+            run()
+
 
         elif choice == "0":
             print("Программа завершена.")
